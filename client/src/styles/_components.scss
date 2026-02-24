@@ -1,0 +1,475 @@
+// ============================================
+// CipherSQLStudio - Component Styles
+// ============================================
+@use 'variables' as *;
+@use 'mixins' as *;
+
+// ============================================
+// App Layout
+// ============================================
+.app {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.main-content {
+  flex: 1;
+  padding: $spacing-4 0;
+  
+  @include sm {
+    padding: $spacing-6 0;
+  }
+  
+  @include lg {
+    padding: $spacing-8 0;
+  }
+}
+
+// ============================================
+// Header
+// ============================================
+.header {
+  background-color: $color-primary;
+  color: $text-light;
+  padding: $spacing-3 0;
+  position: sticky;
+  top: 0;
+  z-index: $z-index-sticky;
+  box-shadow: $shadow-md;
+  
+  @include sm {
+    padding: $spacing-4 0;
+  }
+  
+  &__container {
+    @include container;
+    @include flex-between;
+    gap: $spacing-4;
+  }
+  
+  &__logo {
+    @include flex-start;
+    gap: $spacing-2;
+    text-decoration: none;
+    color: $text-light;
+    
+    &:hover {
+      color: $text-light;
+      text-decoration: none;
+    }
+  }
+  
+  &__logo-icon {
+    width: 32px;
+    height: 32px;
+    
+    @include sm {
+      width: 40px;
+      height: 40px;
+    }
+  }
+  
+  &__logo-text {
+    font-size: $font-size-lg;
+    font-weight: $font-weight-bold;
+    display: none;
+    
+    @include sm {
+      display: block;
+      font-size: $font-size-xl;
+    }
+  }
+  
+  &__nav {
+    display: none;
+    
+    @include md {
+      @include flex-start;
+      gap: $spacing-6;
+    }
+  }
+  
+  &__nav-link {
+    color: rgba($text-light, 0.9);
+    font-weight: $font-weight-medium;
+    padding: $spacing-2 $spacing-3;
+    border-radius: $border-radius-base;
+    transition: all $transition-fast;
+    
+    &:hover {
+      color: $text-light;
+      background-color: rgba($text-light, 0.1);
+      text-decoration: none;
+    }
+    
+    &--active {
+      color: $text-light;
+      background-color: rgba($text-light, 0.15);
+    }
+  }
+  
+  &__actions {
+    @include flex-start;
+    gap: $spacing-2;
+    
+    @include sm {
+      gap: $spacing-3;
+    }
+  }
+  
+  &__mobile-menu-btn {
+    @include button-ghost;
+    @include touch-target;
+    padding: $spacing-2;
+    color: $text-light;
+    
+    @include md {
+      display: none;
+    }
+    
+    &:hover {
+      background-color: rgba($text-light, 0.1);
+    }
+  }
+}
+
+// ============================================
+// Mobile Navigation
+// ============================================
+.mobile-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba($color-black, 0.5);
+  z-index: $z-index-modal-backdrop;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity $transition-base, visibility $transition-base;
+  
+  &--open {
+    opacity: 1;
+    visibility: visible;
+  }
+  
+  &__panel {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 280px;
+    max-width: 80vw;
+    height: 100%;
+    background-color: $color-primary;
+    padding: $spacing-6;
+    transform: translateX(100%);
+    transition: transform $transition-base;
+    
+    .mobile-nav--open & {
+      transform: translateX(0);
+    }
+  }
+  
+  &__close {
+    @include button-ghost;
+    position: absolute;
+    top: $spacing-4;
+    right: $spacing-4;
+    color: $text-light;
+    padding: $spacing-2;
+  }
+  
+  &__links {
+    @include flex-column;
+    gap: $spacing-4;
+    margin-top: $spacing-10;
+  }
+  
+  &__link {
+    color: $text-light;
+    font-size: $font-size-lg;
+    padding: $spacing-3;
+    border-radius: $border-radius-base;
+    
+    &:hover {
+      background-color: rgba($text-light, 0.1);
+      text-decoration: none;
+    }
+  }
+}
+
+// ============================================
+// Footer
+// ============================================
+.footer {
+  background-color: $color-primary-dark;
+  color: rgba($text-light, 0.8);
+  padding: $spacing-6 0;
+  margin-top: auto;
+  
+  @include sm {
+    padding: $spacing-8 0;
+  }
+  
+  &__container {
+    @include container;
+    text-align: center;
+    
+    @include sm {
+      @include flex-between;
+      text-align: left;
+    }
+  }
+  
+  &__text {
+    margin-bottom: $spacing-3;
+    
+    @include sm {
+      margin-bottom: 0;
+    }
+  }
+  
+  &__links {
+    @include flex-center;
+    gap: $spacing-4;
+  }
+  
+  &__link {
+    color: rgba($text-light, 0.8);
+    
+    &:hover {
+      color: $text-light;
+    }
+  }
+}
+
+// ============================================
+// Buttons
+// ============================================
+.btn {
+  @include button-base;
+  
+  &--primary {
+    @include button-primary;
+  }
+  
+  &--secondary {
+    @include button-secondary;
+  }
+  
+  &--outline {
+    @include button-outline;
+  }
+  
+  &--ghost {
+    @include button-ghost;
+  }
+  
+  &--sm {
+    padding: $spacing-2 $spacing-3;
+    font-size: $font-size-sm;
+  }
+  
+  &--lg {
+    padding: $spacing-4 $spacing-6;
+    font-size: $font-size-lg;
+  }
+  
+  &--block {
+    display: flex;
+    width: 100%;
+  }
+  
+  &--success {
+    @include button-base;
+    background-color: $color-success;
+    color: $text-light;
+    
+    &:hover:not(:disabled) {
+      background-color: darken($color-success, 10%);
+    }
+  }
+  
+  &--danger {
+    @include button-base;
+    background-color: $color-error;
+    color: $text-light;
+    
+    &:hover:not(:disabled) {
+      background-color: darken($color-error, 10%);
+    }
+  }
+}
+
+// ============================================
+// Cards
+// ============================================
+.card {
+  @include card;
+  padding: $spacing-4;
+  
+  @include sm {
+    padding: $spacing-6;
+  }
+  
+  &--hover {
+    @include card-hover;
+    cursor: pointer;
+  }
+  
+  &__header {
+    @include flex-between;
+    margin-bottom: $spacing-4;
+  }
+  
+  &__title {
+    font-size: $font-size-lg;
+    font-weight: $font-weight-semibold;
+    margin-bottom: 0;
+    
+    @include sm {
+      font-size: $font-size-xl;
+    }
+  }
+  
+  &__body {
+    color: $text-secondary;
+  }
+  
+  &__footer {
+    margin-top: $spacing-4;
+    padding-top: $spacing-4;
+    border-top: 1px solid $color-gray-200;
+  }
+}
+
+// ============================================
+// Form Elements
+// ============================================
+.form-group {
+  margin-bottom: $spacing-4;
+  
+  &__label {
+    display: block;
+    margin-bottom: $spacing-2;
+    font-weight: $font-weight-medium;
+    color: $text-primary;
+  }
+  
+  &__input {
+    @include input-base;
+  }
+  
+  &__error {
+    color: $color-error;
+    font-size: $font-size-sm;
+    margin-top: $spacing-2;
+  }
+  
+  &--error .form-group__input {
+    @include input-error;
+  }
+}
+
+.input {
+  @include input-base;
+}
+
+.textarea {
+  @include input-base;
+  min-height: 100px;
+  resize: vertical;
+}
+
+// ============================================
+// Badges
+// ============================================
+.badge {
+  @include badge;
+  
+  &--easy {
+    @include difficulty-badge($color-easy);
+  }
+  
+  &--medium {
+    @include difficulty-badge($color-medium);
+  }
+  
+  &--hard {
+    @include difficulty-badge($color-hard);
+  }
+  
+  &--info {
+    background-color: rgba($color-info, 0.15);
+    color: darken($color-info, 10%);
+  }
+  
+  &--success {
+    background-color: rgba($color-success, 0.15);
+    color: darken($color-success, 10%);
+  }
+}
+
+// ============================================
+// Container
+// ============================================
+.container {
+  @include container;
+}
+
+// ============================================
+// Loading States
+// ============================================
+.loading {
+  @include flex-center;
+  padding: $spacing-8;
+  
+  &__spinner {
+    width: 40px;
+    height: 40px;
+    border: 3px solid $color-gray-200;
+    border-top-color: $color-primary;
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+  }
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+// ============================================
+// Messages
+// ============================================
+.message {
+  padding: $spacing-4;
+  border-radius: $border-radius-base;
+  margin-bottom: $spacing-4;
+  
+  &--error {
+    background-color: rgba($color-error, 0.1);
+    color: darken($color-error, 10%);
+    border: 1px solid rgba($color-error, 0.3);
+  }
+  
+  &--success {
+    background-color: rgba($color-success, 0.1);
+    color: darken($color-success, 10%);
+    border: 1px solid rgba($color-success, 0.3);
+  }
+  
+  &--warning {
+    background-color: rgba($color-warning, 0.1);
+    color: darken($color-warning, 15%);
+    border: 1px solid rgba($color-warning, 0.3);
+  }
+  
+  &--info {
+    background-color: rgba($color-info, 0.1);
+    color: darken($color-info, 10%);
+    border: 1px solid rgba($color-info, 0.3);
+  }
+}

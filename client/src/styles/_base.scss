@@ -1,0 +1,195 @@
+@use 'variables' as *;
+@use 'mixins' as *;
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: $font-family-base;
+  font-size: $font-size-base;
+  font-weight: $font-weight-normal;
+  line-height: $line-height-base;
+  color: $text-primary;
+  background-color: $bg-primary;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  @include heading-base;
+  margin-bottom: $spacing-4;
+}
+
+h1 {
+  font-size: $font-size-2xl;
+  
+  @include sm {
+    font-size: $font-size-3xl;
+  }
+  
+  @include lg {
+    font-size: $font-size-4xl;
+  }
+}
+
+h2 {
+  font-size: $font-size-xl;
+  
+  @include sm {
+    font-size: $font-size-2xl;
+  }
+  
+  @include lg {
+    font-size: $font-size-3xl;
+  }
+}
+
+h3 {
+  font-size: $font-size-lg;
+  
+  @include sm {
+    font-size: $font-size-xl;
+  }
+  
+  @include lg {
+    font-size: $font-size-2xl;
+  }
+}
+
+h4 {
+  font-size: $font-size-base;
+  
+  @include sm {
+    font-size: $font-size-lg;
+  }
+}
+
+p {
+  margin-bottom: $spacing-4;
+  
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+a {
+  color: $color-primary;
+  text-decoration: none;
+  transition: color $transition-fast;
+  
+  &:hover {
+    color: $color-primary-light;
+    text-decoration: underline;
+  }
+}
+
+code {
+  font-family: $font-family-mono;
+  font-size: 0.9em;
+  padding: $spacing-1 $spacing-2;
+  background-color: $color-gray-100;
+  border-radius: $border-radius-sm;
+}
+
+pre {
+  font-family: $font-family-mono;
+  font-size: $font-size-sm;
+  padding: $spacing-4;
+  background-color: $color-gray-800;
+  color: $color-gray-100;
+  border-radius: $border-radius-base;
+  overflow-x: auto;
+  @include scrollbar-custom;
+  
+  code {
+    padding: 0;
+    background: none;
+  }
+}
+
+ul, ol {
+  padding-left: $spacing-6;
+  margin-bottom: $spacing-4;
+}
+
+li {
+  margin-bottom: $spacing-2;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: $spacing-4;
+}
+
+th, td {
+  padding: $spacing-3 $spacing-4;
+  text-align: left;
+  border-bottom: 1px solid $color-gray-200;
+}
+
+th {
+  font-weight: $font-weight-semibold;
+  background-color: $color-gray-50;
+}
+
+// ============================================
+// Forms
+// ============================================
+button {
+  font-family: inherit;
+  cursor: pointer;
+}
+
+input,
+textarea,
+select {
+  font-family: inherit;
+}
+
+label {
+  display: block;
+  margin-bottom: $spacing-2;
+  font-weight: $font-weight-medium;
+  color: $text-primary;
+}
+
+// ============================================
+// Focus States (Accessibility)
+// ============================================
+:focus-visible {
+  outline: 2px solid $color-secondary;
+  outline-offset: 2px;
+}
+
+// ============================================
+// Selection
+// ============================================
+::selection {
+  background-color: $color-secondary;
+  color: $color-primary-dark;
+}
+
+// ============================================
+// Scrollbar
+// ============================================
+body {
+  @include scrollbar-custom;
+}

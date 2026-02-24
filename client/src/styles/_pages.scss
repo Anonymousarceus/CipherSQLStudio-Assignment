@@ -1,0 +1,900 @@
+// ============================================
+// CipherSQLStudio - Page Styles
+// ============================================
+@use 'variables' as *;
+@use 'mixins' as *;
+
+// ============================================
+// Home Page
+// ============================================
+.home {
+  &__hero {
+    background: linear-gradient(135deg, $color-primary 0%, $color-primary-dark 100%);
+    color: $text-light;
+    padding: $spacing-10 0;
+    text-align: center;
+    
+    @include sm {
+      padding: $spacing-16 0;
+    }
+  }
+  
+  &__hero-title {
+    color: $text-light;
+    margin-bottom: $spacing-4;
+    
+    @include sm {
+      margin-bottom: $spacing-6;
+    }
+  }
+  
+  &__hero-subtitle {
+    font-size: $font-size-lg;
+    opacity: 0.9;
+    max-width: 600px;
+    margin: 0 auto $spacing-6;
+    
+    @include sm {
+      font-size: $font-size-xl;
+    }
+  }
+  
+  &__hero-actions {
+    @include flex-center;
+    flex-wrap: wrap;
+    gap: $spacing-3;
+    
+    @include sm {
+      gap: $spacing-4;
+    }
+  }
+  
+  &__features {
+    padding: $spacing-10 0;
+    
+    @include sm {
+      padding: $spacing-16 0;
+    }
+  }
+  
+  &__features-title {
+    text-align: center;
+    margin-bottom: $spacing-8;
+    
+    @include sm {
+      margin-bottom: $spacing-12;
+    }
+  }
+  
+  &__features-grid {
+    display: grid;
+    gap: $spacing-6;
+    
+    @include sm {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    
+    @include lg {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+  
+  &__feature {
+    text-align: center;
+    padding: $spacing-6;
+    
+    @include sm {
+      padding: $spacing-8;
+    }
+  }
+  
+  &__feature-icon {
+    width: 48px;
+    height: 48px;
+    margin: 0 auto $spacing-4;
+    color: $color-secondary;
+    
+    @include sm {
+      width: 64px;
+      height: 64px;
+    }
+  }
+  
+  &__feature-title {
+    font-size: $font-size-lg;
+    margin-bottom: $spacing-3;
+  }
+  
+  &__feature-desc {
+    color: $text-secondary;
+    font-size: $font-size-sm;
+    
+    @include sm {
+      font-size: $font-size-base;
+    }
+  }
+  
+  &__cta {
+    background-color: $color-gray-100;
+    padding: $spacing-10 0;
+    text-align: center;
+    
+    @include sm {
+      padding: $spacing-12 0;
+    }
+  }
+  
+  &__cta-title {
+    margin-bottom: $spacing-4;
+  }
+  
+  &__cta-text {
+    color: $text-secondary;
+    margin-bottom: $spacing-6;
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+// ============================================
+// Assignments List Page
+// ============================================
+.assignments {
+  &__header {
+    margin-bottom: $spacing-6;
+    
+    @include sm {
+      @include flex-between;
+      margin-bottom: $spacing-8;
+    }
+  }
+  
+  &__title {
+    margin-bottom: $spacing-4;
+    
+    @include sm {
+      margin-bottom: 0;
+    }
+  }
+  
+  &__filters {
+    @include flex-start;
+    flex-wrap: wrap;
+    gap: $spacing-2;
+    
+    @include sm {
+      gap: $spacing-3;
+    }
+  }
+  
+  &__filter-btn {
+    @include button-base;
+    padding: $spacing-2 $spacing-4;
+    font-size: $font-size-sm;
+    background-color: $color-gray-200;
+    color: $text-primary;
+    
+    &:hover:not(:disabled) {
+      background-color: $color-gray-300;
+    }
+    
+    &--active {
+      background-color: $color-primary;
+      color: $text-light;
+      
+      &:hover:not(:disabled) {
+        background-color: $color-primary-light;
+      }
+    }
+  }
+  
+  &__grid {
+    display: grid;
+    gap: $spacing-4;
+    
+    @include sm {
+      grid-template-columns: repeat(2, 1fr);
+      gap: $spacing-6;
+    }
+    
+    @include lg {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+  
+  &__empty {
+    text-align: center;
+    padding: $spacing-10;
+    color: $text-secondary;
+    grid-column: 1 / -1;
+  }
+}
+
+// Assignment Card
+.assignment-card {
+  @include card;
+  @include card-hover;
+  padding: $spacing-4;
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  color: inherit;
+  
+  @include sm {
+    padding: $spacing-5;
+  }
+  
+  &:hover {
+    text-decoration: none;
+    color: inherit;
+  }
+  
+  &__header {
+    @include flex-between;
+    margin-bottom: $spacing-3;
+  }
+  
+  &__difficulty {
+    @include badge;
+    
+    &--easy {
+      @include difficulty-badge($color-easy);
+    }
+    
+    &--medium {
+      @include difficulty-badge($color-medium);
+    }
+    
+    &--hard {
+      @include difficulty-badge($color-hard);
+    }
+  }
+  
+  &__category {
+    font-size: $font-size-xs;
+    color: $text-muted;
+    text-transform: uppercase;
+  }
+  
+  &__title {
+    font-size: $font-size-lg;
+    font-weight: $font-weight-semibold;
+    margin-bottom: $spacing-2;
+    color: $text-primary;
+  }
+  
+  &__description {
+    font-size: $font-size-sm;
+    color: $text-secondary;
+    @include text-line-clamp(2);
+    margin-bottom: $spacing-4;
+    flex: 1;
+  }
+  
+  &__footer {
+    @include flex-between;
+    padding-top: $spacing-3;
+    border-top: 1px solid $color-gray-200;
+    font-size: $font-size-sm;
+    color: $text-muted;
+  }
+  
+  &__meta {
+    @include flex-start;
+    gap: $spacing-3;
+  }
+  
+  &__meta-item {
+    @include flex-start;
+    gap: $spacing-1;
+  }
+}
+
+// ============================================
+// Assignment Attempt Page
+// ============================================
+.attempt {
+  @include container;
+  
+  &__back {
+    @include flex-start;
+    gap: $spacing-2;
+    margin-bottom: $spacing-4;
+    color: $text-secondary;
+    font-size: $font-size-sm;
+    
+    &:hover {
+      color: $color-primary;
+    }
+  }
+  
+  &__header {
+    margin-bottom: $spacing-6;
+    
+    @include md {
+      @include flex-between;
+      align-items: flex-start;
+    }
+  }
+  
+  &__header-left {
+    margin-bottom: $spacing-4;
+    
+    @include md {
+      margin-bottom: 0;
+      max-width: 70%;
+    }
+  }
+  
+  &__title {
+    @include flex-start;
+    flex-wrap: wrap;
+    gap: $spacing-3;
+    margin-bottom: $spacing-2;
+    
+    h1 {
+      margin-bottom: 0;
+    }
+  }
+  
+  &__meta {
+    @include flex-start;
+    flex-wrap: wrap;
+    gap: $spacing-4;
+    color: $text-secondary;
+    font-size: $font-size-sm;
+  }
+  
+  &__header-actions {
+    @include flex-start;
+    gap: $spacing-3;
+  }
+  
+  &__layout {
+    display: grid;
+    gap: $spacing-4;
+    
+    @include md {
+      grid-template-columns: 1fr 1fr;
+      gap: $spacing-6;
+    }
+    
+    @include lg {
+      grid-template-columns: 2fr 3fr;
+    }
+  }
+  
+  &__sidebar {
+    @include flex-column;
+    gap: $spacing-4;
+    
+    @include md {
+      gap: $spacing-6;
+    }
+  }
+  
+  &__main {
+    @include flex-column;
+    gap: $spacing-4;
+    
+    @include md {
+      gap: $spacing-6;
+    }
+  }
+}
+
+// Question Panel
+.question-panel {
+  @include card;
+  padding: $spacing-4;
+  
+  @include sm {
+    padding: $spacing-6;
+  }
+  
+  &__title {
+    font-size: $font-size-lg;
+    margin-bottom: $spacing-4;
+    color: $color-primary;
+  }
+  
+  &__content {
+    font-size: $font-size-base;
+    line-height: $line-height-relaxed;
+    
+    @include sm {
+      font-size: $font-size-lg;
+    }
+  }
+  
+  &__expected {
+    margin-top: $spacing-4;
+    padding-top: $spacing-4;
+    border-top: 1px solid $color-gray-200;
+  }
+  
+  &__expected-title {
+    font-size: $font-size-sm;
+    font-weight: $font-weight-semibold;
+    color: $text-secondary;
+    text-transform: uppercase;
+    margin-bottom: $spacing-2;
+  }
+  
+  &__expected-content {
+    font-size: $font-size-sm;
+    color: $text-secondary;
+  }
+}
+
+// Sample Data Panel
+.sample-data {
+  @include card;
+  padding: $spacing-4;
+  
+  @include sm {
+    padding: $spacing-6;
+  }
+  
+  &__title {
+    font-size: $font-size-lg;
+    margin-bottom: $spacing-4;
+    color: $color-primary;
+  }
+  
+  &__tabs {
+    @include flex-start;
+    gap: $spacing-2;
+    margin-bottom: $spacing-4;
+    overflow-x: auto;
+    padding-bottom: $spacing-2;
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  &__tab {
+    @include button-base;
+    padding: $spacing-2 $spacing-4;
+    font-size: $font-size-sm;
+    background-color: $color-gray-100;
+    color: $text-primary;
+    white-space: nowrap;
+    
+    &:hover:not(:disabled) {
+      background-color: $color-gray-200;
+    }
+    
+    &--active {
+      background-color: $color-primary;
+      color: $text-light;
+    }
+  }
+  
+  &__schema {
+    margin-bottom: $spacing-4;
+    padding: $spacing-3;
+    background-color: $color-gray-50;
+    border-radius: $border-radius-base;
+    font-family: $font-family-mono;
+    font-size: $font-size-sm;
+  }
+  
+  &__table-wrapper {
+    overflow-x: auto;
+    @include scrollbar-custom;
+  }
+  
+  &__table {
+    width: 100%;
+    font-size: $font-size-sm;
+    white-space: nowrap;
+    
+    th, td {
+      padding: $spacing-2 $spacing-3;
+    }
+    
+    th {
+      background-color: $color-gray-100;
+      font-weight: $font-weight-semibold;
+    }
+    
+    tr:nth-child(even) {
+      background-color: $color-gray-50;
+    }
+  }
+}
+
+// SQL Editor Panel
+.sql-editor {
+  @include card;
+  padding: 0;
+  overflow: hidden;
+  
+  &__header {
+    @include flex-between;
+    padding: $spacing-3 $spacing-4;
+    background-color: $color-gray-100;
+    border-bottom: 1px solid $color-gray-200;
+    
+    @include sm {
+      padding: $spacing-4 $spacing-6;
+    }
+  }
+  
+  &__title {
+    font-size: $font-size-base;
+    font-weight: $font-weight-semibold;
+    margin-bottom: 0;
+  }
+  
+  &__actions {
+    @include flex-start;
+    gap: $spacing-2;
+    
+    @include sm {
+      gap: $spacing-3;
+    }
+  }
+  
+  &__editor {
+    height: 200px;
+    
+    @include sm {
+      height: 300px;
+    }
+    
+    @include lg {
+      height: 400px;
+    }
+  }
+  
+  &__footer {
+    @include flex-between;
+    flex-wrap: wrap;
+    gap: $spacing-3;
+    padding: $spacing-3 $spacing-4;
+    background-color: $color-gray-50;
+    border-top: 1px solid $color-gray-200;
+    
+    @include sm {
+      padding: $spacing-4 $spacing-6;
+    }
+  }
+  
+  &__execute-btn {
+    @include button-primary;
+    @include touch-target;
+    
+    &:disabled {
+      background-color: $color-gray-400;
+    }
+  }
+  
+  &__hint-btn {
+    @include button-secondary;
+    @include touch-target;
+  }
+}
+
+// Results Panel
+.results {
+  @include card;
+  padding: 0;
+  overflow: hidden;
+  
+  &__header {
+    @include flex-between;
+    padding: $spacing-3 $spacing-4;
+    background-color: $color-gray-100;
+    border-bottom: 1px solid $color-gray-200;
+    
+    @include sm {
+      padding: $spacing-4 $spacing-6;
+    }
+  }
+  
+  &__title {
+    font-size: $font-size-base;
+    font-weight: $font-weight-semibold;
+    margin-bottom: 0;
+  }
+  
+  &__meta {
+    font-size: $font-size-sm;
+    color: $text-muted;
+  }
+  
+  &__content {
+    padding: $spacing-4;
+    overflow-x: auto;
+    @include scrollbar-custom;
+    
+    @include sm {
+      padding: $spacing-6;
+    }
+  }
+  
+  &__empty {
+    text-align: center;
+    padding: $spacing-8;
+    color: $text-muted;
+  }
+  
+  &__error {
+    color: $color-error;
+    background-color: rgba($color-error, 0.05);
+    padding: $spacing-4;
+    border-radius: $border-radius-base;
+    font-family: $font-family-mono;
+    font-size: $font-size-sm;
+    white-space: pre-wrap;
+  }
+  
+  &__table {
+    width: 100%;
+    font-size: $font-size-sm;
+    white-space: nowrap;
+    
+    th, td {
+      padding: $spacing-2 $spacing-3;
+      text-align: left;
+    }
+    
+    th {
+      background-color: $color-primary;
+      color: $text-light;
+      font-weight: $font-weight-semibold;
+      position: sticky;
+      top: 0;
+    }
+    
+    tr:nth-child(even) {
+      background-color: $color-gray-50;
+    }
+    
+    tr:hover {
+      background-color: rgba($color-secondary, 0.1);
+    }
+  }
+  
+  &__message {
+    padding: $spacing-3;
+    background-color: rgba($color-info, 0.1);
+    color: $color-info;
+    font-size: $font-size-sm;
+    border-radius: $border-radius-base;
+    margin-top: $spacing-4;
+  }
+}
+
+// Hint Panel
+.hint-panel {
+  @include card;
+  background-color: rgba($color-secondary, 0.05);
+  border: 1px solid rgba($color-secondary, 0.3);
+  padding: $spacing-4;
+  
+  @include sm {
+    padding: $spacing-5;
+  }
+  
+  &__header {
+    @include flex-between;
+    margin-bottom: $spacing-3;
+  }
+  
+  &__title {
+    font-size: $font-size-base;
+    font-weight: $font-weight-semibold;
+    color: $color-secondary-dark;
+    margin-bottom: 0;
+    
+    @include flex-start;
+    gap: $spacing-2;
+  }
+  
+  &__level {
+    font-size: $font-size-xs;
+    background-color: $color-secondary;
+    color: $color-primary-dark;
+    padding: $spacing-1 $spacing-2;
+    border-radius: $border-radius-full;
+  }
+  
+  &__close {
+    @include button-ghost;
+    padding: $spacing-1;
+    color: $text-muted;
+  }
+  
+  &__content {
+    font-size: $font-size-sm;
+    line-height: $line-height-relaxed;
+    color: $text-primary;
+    
+    @include sm {
+      font-size: $font-size-base;
+    }
+  }
+  
+  &__actions {
+    margin-top: $spacing-4;
+    @include flex-start;
+    gap: $spacing-3;
+  }
+  
+  &__next-hint-btn {
+    @include button-outline;
+    font-size: $font-size-sm;
+    padding: $spacing-2 $spacing-4;
+    border-color: $color-secondary-dark;
+    color: $color-secondary-dark;
+    
+    &:hover {
+      background-color: $color-secondary-dark;
+      color: $text-light;
+    }
+  }
+}
+
+// ============================================
+// Auth Pages
+// ============================================
+.auth {
+  @include container;
+  max-width: 400px;
+  padding-top: $spacing-8;
+  padding-bottom: $spacing-8;
+  
+  @include sm {
+    padding-top: $spacing-12;
+    padding-bottom: $spacing-12;
+  }
+  
+  &__card {
+    @include card;
+    padding: $spacing-6;
+    
+    @include sm {
+      padding: $spacing-8;
+    }
+  }
+  
+  &__title {
+    text-align: center;
+    margin-bottom: $spacing-6;
+  }
+  
+  &__form {
+    @include flex-column;
+    gap: $spacing-4;
+  }
+  
+  &__submit {
+    @include button-primary;
+    @include touch-target;
+    width: 100%;
+    margin-top: $spacing-2;
+  }
+  
+  &__footer {
+    text-align: center;
+    margin-top: $spacing-6;
+    color: $text-secondary;
+    font-size: $font-size-sm;
+  }
+  
+  &__link {
+    color: $color-primary;
+    font-weight: $font-weight-medium;
+  }
+}
+
+// ============================================
+// Profile Page
+// ============================================
+.profile {
+  @include container;
+  max-width: 800px;
+  
+  &__header {
+    @include card;
+    padding: $spacing-6;
+    margin-bottom: $spacing-6;
+    
+    @include sm {
+      @include flex-between;
+      padding: $spacing-8;
+    }
+  }
+  
+  &__user-info {
+    @include flex-start;
+    gap: $spacing-4;
+    margin-bottom: $spacing-4;
+    
+    @include sm {
+      margin-bottom: 0;
+    }
+  }
+  
+  &__avatar {
+    width: 64px;
+    height: 64px;
+    background-color: $color-primary;
+    border-radius: $border-radius-full;
+    @include flex-center;
+    color: $text-light;
+    font-size: $font-size-2xl;
+    font-weight: $font-weight-bold;
+    
+    @include sm {
+      width: 80px;
+      height: 80px;
+      font-size: $font-size-3xl;
+    }
+  }
+  
+  &__name {
+    font-size: $font-size-xl;
+    font-weight: $font-weight-bold;
+    margin-bottom: $spacing-1;
+    
+    @include sm {
+      font-size: $font-size-2xl;
+    }
+  }
+  
+  &__email {
+    color: $text-secondary;
+    font-size: $font-size-sm;
+  }
+  
+  &__stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: $spacing-4;
+    
+    @include sm {
+      gap: $spacing-6;
+    }
+  }
+  
+  &__stat {
+    text-align: center;
+  }
+  
+  &__stat-value {
+    font-size: $font-size-2xl;
+    font-weight: $font-weight-bold;
+    color: $color-primary;
+    
+    @include sm {
+      font-size: $font-size-3xl;
+    }
+  }
+  
+  &__stat-label {
+    font-size: $font-size-xs;
+    color: $text-muted;
+    text-transform: uppercase;
+    
+    @include sm {
+      font-size: $font-size-sm;
+    }
+  }
+  
+  &__section {
+    @include card;
+    padding: $spacing-6;
+    
+    @include sm {
+      padding: $spacing-8;
+    }
+  }
+  
+  &__section-title {
+    font-size: $font-size-lg;
+    margin-bottom: $spacing-4;
+  }
+}
